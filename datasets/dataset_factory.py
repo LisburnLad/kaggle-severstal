@@ -114,8 +114,8 @@ class FilteredTestDataset(Dataset):
 
 
 def expand_path(p):
-    train_dir = Path('../input/severstal-steel-defect-detection/train_images')
-    test_dir = Path('../input/severstal-steel-defect-detection/test_images')
+    train_dir = Path('SteelDefect/train_images')
+    test_dir = Path('SteelDefect/test_images')
     if (train_dir / p).exists():
         return train_dir / p
     elif (test_dir / p).exists():

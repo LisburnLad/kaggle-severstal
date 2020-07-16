@@ -1,7 +1,8 @@
 import numpy as np
 import torch
 from catalyst.dl.callbacks import CriterionCallback
-from catalyst.dl.core.state import RunnerState
+# from catalyst.dl.core.state import RunnerState
+from catalyst.dl import State
 from typing import List
 
 
@@ -26,11 +27,11 @@ class CutMixCallback(CriterionCallback):
         self.index = None
         self.is_needed = True
 
-    def on_loader_start(self, state: RunnerState):
+    def on_loader_start(self, state: State):
         self.is_needed = not self.on_train_only or \
                          state.loader_name.startswith("train")
 
-    def on_batch_start(self, state: RunnerState):
+    def on_batch_start(self, state: State):
         if not self.is_needed:
             return
 
